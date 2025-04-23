@@ -1,5 +1,6 @@
 from .pages.main_page import MainPage
 
+
 #тут используются методы класса MainPage, чтобы задать последовательность действий для самой проверки
 def test_guest_can_go_to_login_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
