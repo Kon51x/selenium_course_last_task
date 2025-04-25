@@ -37,6 +37,17 @@ def browser(request):
     time.sleep(7)
     print("\nquit browser..")
     browser.quit()
+
+@pytest.fixture
+def product_link():
+    return "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/"
+
+def second_product_link():
+    return "http://selenium1py.pythonanywhere.com/en-gb/catalogue/coders-at-work_207/"
+
+@pytest.fixture
+def main_link():
+    return "http://selenium1py.pythonanywhere.com/"
  
 
 
