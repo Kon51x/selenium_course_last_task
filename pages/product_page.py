@@ -13,6 +13,13 @@ class ProductPage(BasePage):
     def guest_should_see_add_product_to_basket_button(self):
         assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET), "add_to_basket is not presented"
 
+    def guest_should_see_view_basket_button(self):
+        assert self.is_element_present(*ProductPageLocators.VIEW_BASKET)
+    
+    def go_to_view_basket(self):
+        basket = self.browser.find_element(*ProductPageLocators.VIEW_BASKET)
+        basket.click()
+
     def get_product_stock_count(self):
         stock_element = self.browser.find_element(*ProductPageLocators.PRODUCT_STOCK)
         stock_text = stock_element.text
@@ -47,6 +54,9 @@ class ProductPage(BasePage):
 
     def get_success_message_product_name(self):
         return self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE_PRODUCT_NAME).text
+    
+    def success_message_has_close_button (self):
+        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE_CLOSE_BUTTON)
 
     def get_basket_total_price(self):
         product_price_text = self.browser.find_element(*ProductPageLocators.BASKET_TOTAL_PRICE).text
@@ -58,3 +68,4 @@ class ProductPage(BasePage):
         price_digits = ''.join(c for c in price_text if c.isdigit() or c == '.')
         return float(price_digits)
     
+
