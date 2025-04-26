@@ -24,4 +24,9 @@ class ProductPageLocators():
     PRODUCT_STOCK = (By.CSS_SELECTOR, "div.col-sm-6.product_main > p.instock.availability")
     PRODUCT_IMAGE = (By.CSS_SELECTOR, ".item.active img")
     SUCCESS_MESSAGE_PRODUCT_NAME = (By.CSS_SELECTOR, "#messages div:nth-child(1)")
+    SUCCESS_MESSAGE_CLOSE_BUTTON = (By.CSS_SELECTOR, "#messages > div:nth-child(1) > a.close")
     BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, "div.basket-mini.pull-right.hidden-xs")
+    VIEW_BASKET = (By.CSS_SELECTOR, "div.basket-mini.pull-right.hidden-xs > span > a")
+
+class BasketPageLocators():
+    BASKET_ITEMS = (By.CSS_SELECTOR, ".basket-items .row h3 a")
