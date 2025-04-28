@@ -15,10 +15,6 @@ class ProductPage(BasePage):
 
     def guest_should_see_view_basket_button(self):
         assert self.is_element_present(*ProductPageLocators.VIEW_BASKET)
-    
-    def go_to_view_basket(self):
-        basket = self.browser.find_element(*ProductPageLocators.VIEW_BASKET)
-        basket.click()
 
     def get_product_stock_count(self):
         stock_element = self.browser.find_element(*ProductPageLocators.PRODUCT_STOCK)
@@ -51,6 +47,18 @@ class ProductPage(BasePage):
 
     def get_product_price(self):
         return self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+    
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+        
+    def should_be_success_message(self):
+        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is not presented, but should be"
+    
+    def success_message_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is not dissappeared, but should be"
 
     def get_success_message_product_name(self):
         return self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE_PRODUCT_NAME).text
@@ -67,5 +75,15 @@ class ProductPage(BasePage):
         price_text = self.get_product_price()
         price_digits = ''.join(c for c in price_text if c.isdigit() or c == '.')
         return float(price_digits)
+    
+    def navbar_has_search(self):
+        self.product_page_has_search()
+        self.product_page_has_search_button()
+
+    def product_page_has_search(self):
+        assert self.is_element_present(*ProductPageLocators.SEARCHBAR)
+
+    def product_page_has_search_button(self):
+        assert self.is_element_present(*ProductPageLocators.SEARCH_BUTTON)
     
 
